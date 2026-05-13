@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamz - Profil Link</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --bg: linear-gradient(135deg, #0f172a, #1e293b, #312e81);
+      --card: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --secondary: #cbd5e1;
+      --button: rgba(255,255,255,0.12);
+      --button-hover: rgba(255,255,255,0.2);
+      --shadow: 0 8px 30px rgba(0,0,0,0.3);
+      --border: rgba(255,255,255,0.2);
+    }
+
+    body.light {
+      --bg: linear-gradient(135deg, #dbeafe, #f5f3ff, #fbcfe8);
+      --card: rgba(255, 255, 255, 0.65);
+      --text: #111827;
+      --secondary: #4b5563;
+      --button: rgba(255,255,255,0.6);
+      --button-hover: rgba(255,255,255,0.95);
+      --shadow: 0 8px 30px rgba(0,0,0,0.15);
+      --border: rgba(255,255,255,0.6);
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 15px;
+      overflow-x: hidden;
+      position: relative;
+      transition: 0.4s ease;
+    }
+
+    .background-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(168,85,247,0.3);
+      filter: blur(100px);
+      top: -100px;
+      left: -100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .background-glow2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.3);
+      filter: blur(100px);
+      bottom: -100px;
+      right: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      border-radius: 30px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      color: var(--secondary);
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--button);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      border-radius: 18px;
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: 0.6s;
+    }
+
+    .link-btn:hover::before {
+      left: 100%;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: var(--button-hover);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .link-text {
+      text-align: left;
+    }
+
+    .link-text h3 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .link-text p {
+      font-size: 12px;
+      color: var(--secondary);
+    }
+
+    .arrow {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .toggle-btn {
+      border: none;
+      background: var(--button);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.05);
+      background: var(--button-hover);
+    }
+
+    .theme-select {
+      border: 1px solid var(--border);
+      background: var(--button);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      outline: none;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .theme-select option {
+      color: black;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: var(--secondary);
+    }
+
+    .music-player {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    
+
+    .music-player button {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: var(--button);
+      color: var(--text);
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .visitor-counter,
+    .clock,
+    .spotify-box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--button);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .cursor-glow {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      background: rgba(255,255,255,0.5);
+      filter: blur(8px);
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      animation: particleMove linear infinite;
+    }
+
+    @keyframes particleMove {
+      from {
+        transform: translateY(100vh);
+      }
+      to {
+        transform: translateY(-100vh);
+      }
+    }
+
+    .snowflake,
+    .bubble,
+    .rain,
+    .star,
+    .banana {
+      position: fixed;
+      top: -10px;
+      user-select: none;
+      pointer-events: none;
+      z-index: 999;
+      animation: fall linear forwards;
+    }
+
+    .bubble {
+      color: #bde0fe;
+    }
+
+    .rain {
+      color: #7dd3fc;
+    }
+
+    .star {
+      color: #fde68a;
+    }
+
+    .banana {
+      color: #facc15;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 25px 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="background-glow"></div>
+  <div class="background-glow2"></div>
+
+  <div class="container">
+
+    <div class="top-actions">
+      <button class="toggle-btn" onclick="toggleTheme()">
+        <i class="fa-solid fa-moon"></i> Dark / Light
+      </button>
+
+      <button class="toggle-btn" onclick="toggleSnow()">
+        <i class="fa-solid fa-snowflake"></i> Snow Effect
+      </button>
+
+      <button class="toggle-btn" onclick="toggleBubbles()">
+        🫧 Bubble
+      </button>
+
+      <button class="toggle-btn" onclick="toggleRain()">
+        🌧️ Rain
+      </button>
+
+      <button class="toggle-btn" onclick="toggleStars()">
+        ⭐ Stars
+      </button>
+
+      <button class="toggle-btn" onclick="toggleBananas()">
+        🍌 Banana Rain
+      </button>
+
+      <select class="theme-select" onchange="changeTheme(this.value)">
+        <option value="default">✨ Default</option>
+        <option value="nebula">🌌 Nebula</option>
+        <option value="sakura">🌸 Sakura</option>
+        <option value="midnight">🌙 Midnight</option>
+        <option value="ocean">🌊 Ocean</option>
+        <option value="sunset">🔥 Sunset</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <img src="https://img1.pixhost.to/images/8163/633987017_media.jpg" alt="Profile" class="profile-img">
+
+      <h1>Hamz CuwekzZ</h1>
+
+      <p class="bio">
+        <span id="typing"></span>
+      </p>
+
+      <div class="music-player">
+        <button onclick="toggleMusic()" id="musicBtn">
+          <i class="fa-solid fa-music"></i> Play Music
+        </button>
+      </div>
+
+      <!-- Ganti file music.mp3 dengan lagu milikmu sendiri -->
+      <audio id="audioPlayer" loop>
+        <source src="https://mp3tourl.com/audio/1778648339828-afc5dbf0-3743-473f-80a6-1c4fed22f5a0.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="buttons">
+
+        <a href="https://wa.me/6288706997166" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="link-text">
+              <h3>WhatsApp</h3>
+              <p>Save No Real Hamz</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+        <a href="https://instagram.com/@nzril1lhm_" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+            <div class="link-text">
+              <h3>Instagram</h3>
+              <p>Follow My IG Woii</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+        <a href="https://tiktok.com/@zrill_bae11" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-tiktok"></i></div>
+            <div class="link-text">
+              <h3>TikTok</h3>
+              <p>Follow Tt Guweh Lah</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+        <a href="https://open.spotify.com/playlist/3LddFzTYJhWdnwWaByxyK2?si=lliX4BrrTtCr5yJZ41jEbA" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-spotify"></i></div>
+            <div class="link-text">
+              <h3>Spotify Playlist</h3>
+              <p>Dengerin playlist favorit ku</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+        <a href="https://www.youtube.com/@zrill4you_ketche" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-youtube"></i></div>
+            <div class="link-text">
+              <h3>YouTube</h3>
+              <p>Subs My Yt jir</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+        <a href="https://t.me/zrill4you" class="link-btn" target="_blank">
+          <div class="left">
+            <div class="icon"><i class="fa-brands fa-telegram"></i></div>
+            <div class="link-text">
+              <h3>Telegram</h3>
+              <p>my tele guwa</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+        </a>
+
+      </div>
+
+      <div class="spotify-box">
+        <i class="fa-brands fa-spotify"></i>
+        Spotify Now Playing: <b>Not Connected</b>
+      </div>
+
+      <div class="visitor-counter">
+        👁️ Visitors: <span id="visitorCount">0</span>
+      </div>
+
+      <div class="clock">
+        🕒 <span id="clock"></span>
+      </div>
+
+      <footer>
+        © 2026 HAMZ • Hak Cipta Dilindungi
+      </footer>
+    </div>
+  </div>
+
+  <div class="particles" id="particles"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+
+    const typingText = [
+      'Creative Content Creator ✨',
+      'Gaming & Music Enthusiast 🎮',
+      'Welcome to my modern bio 🌌'
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function typeEffect() {
+      const typing = document.getElementById('typing');
+
+      if (charIndex < typingText[textIndex].length) {
+        typing.innerHTML += typingText[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 70);
+      } else {
+        setTimeout(() => {
+          typing.innerHTML = '';
+          charIndex = 0;
+          textIndex = (textIndex + 1) % typingText.length;
+          typeEffect();
+        }, 1800);
+      }
+    }
+
+    typeEffect();
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').innerHTML = now.toLocaleTimeString('id-ID');
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    let visitors = localStorage.getItem('visitors') || 0;
+    visitors++;
+    localStorage.setItem('visitors', visitors);
+    document.getElementById('visitorCount').innerText = visitors;
+
+    const glow = document.getElementById('cursorGlow');
+
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = Math.random() * 5 + 5 + 's';
+      document.getElementById('particles').appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 10000);
+    }
+
+    setInterval(createParticle, 200);
+
+    function toggleMusic() {
+      const player = document.getElementById('audioPlayer');
+      const btn = document.getElementById('musicBtn');
+
+      if (player.paused) {
+        player.play();
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause Music';
+      } else {
+        player.pause();
+        btn.innerHTML = '<i class="fa-solid fa-music"></i> Play Music';
+      }
+    }
+
+    let snowActive = false;
+    let snowInterval;
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.innerHTML = '❄';
+
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+      snowflake.style.animationDuration = Math.random() * 3 + 3 + 's';
+      snowflake.style.opacity = Math.random();
+
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 7000);
+    }
+
+    function toggleSnow() {
+      snowActive = !snowActive;
+
+      if (snowActive) {
+        snowInterval = setInterval(createSnowflake, 120);
+      } else {
+        clearInterval(snowInterval);
+        document.querySelectorAll('.snowflake').forEach(s => s.remove());
+      }
+    }
+
+    
+
+    let bubbleInterval, rainInterval, starInterval, bananaInterval;
+
+    function createEffect(className, emoji) {
+      const effect = document.createElement('div');
+      effect.classList.add(className);
+      effect.innerHTML = emoji;
+      effect.style.left = Math.random() * window.innerWidth + 'px';
+      effect.style.fontSize = Math.random() * 20 + 10 + 'px';
+      effect.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(effect);
+
+      setTimeout(() => {
+        effect.remove();
+      }, 7000);
+    }
+
+    function toggleBubbles() {
+      if (bubbleInterval) {
+        clearInterval(bubbleInterval);
+        bubbleInterval = null;
+      } else {
+        bubbleInterval = setInterval(() => createEffect('bubble', '🫧'), 180);
+      }
+    }
+
+    function toggleRain() {
+      if (rainInterval) {
+        clearInterval(rainInterval);
+        rainInterval = null;
+      } else {
+        rainInterval = setInterval(() => createEffect('rain', '💧'), 80);
+      }
+    }
+
+    function toggleStars() {
+      if (starInterval) {
+        clearInterval(starInterval);
+        starInterval = null;
+      } else {
+        starInterval = setInterval(() => createEffect('star', '⭐'), 200);
+      }
+    }
+
+    function toggleBananas() {
+      if (bananaInterval) {
+        clearInterval(bananaInterval);
+        bananaInterval = null;
+      } else {
+        bananaInterval = setInterval(() => createEffect('banana', '🍌'), 160);
+      }
+    }
+
+    function changeTheme(theme) {
+      const root = document.documentElement;
+
+      if (theme === 'nebula') {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)');
+      }
+
+      else if (theme === 'sakura') {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #ffd1dc, #ffe4ec, #ffc1cc)');
+        root.style.setProperty('--text', '#4a044e');
+        root.style.setProperty('--secondary', '#6b7280');
+        root.style.setProperty('--button', 'rgba(255,255,255,0.7)');
+        root.style.setProperty('--button-hover', 'rgba(255,255,255,0.95)');
+      }
+
+      else if (theme === 'midnight') {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #000000, #111827, #1f2937)');
+      }
+
+      else if (theme === 'ocean') {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)');
+      }
+
+      else if (theme === 'sunset') {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #ff512f, #dd2476, #ff9966)');
+      }
+
+      else {
+        root.style.setProperty('--bg', 'linear-gradient(135deg, #0f172a, #1e293b, #312e81)');
+      }
+    }
+  </script>
+
+</body>
+</html>
